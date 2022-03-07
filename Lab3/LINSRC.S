@@ -1,0 +1,27 @@
+;LINEAR SEARCH 
+.DATA
+    A: .WORD 100,200,300,400,500,600;SORTED ARRAY 
+    B: .WORD 0
+
+.TEXT 
+    MOV R0,#500 ; KEY ELEMENT
+    MOV R3,#4 
+    LDR R1,=A
+    LDR R5,=B
+    MOV R7,#00
+    MOV R8,#01
+
+    LOOP: 
+        CMP R4,#6 ;SERACHING WITHIN THE INDEX
+        BEQ NOTFOUND
+        LDR R2,[R1],R3
+        ADD R4,R4,#1
+        CMP R0,R2
+        BEQ FOUND
+        BNE LOOP
+
+    NOTFOUND: STR R7,[R5]
+        SWI 0X011
+    
+    FOUND: STR R8,[R5]
+        SWI 0X011

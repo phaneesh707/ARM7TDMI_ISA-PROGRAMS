@@ -1,0 +1,17 @@
+MOV R0,#10
+MOV R1,#5   
+
+LOOP: CMP R0,R1
+    BEQ L1
+    BGT L2
+    BLT L3 
+
+
+L1: MOV R3,R1
+    SWI 0X011
+
+L2: SUB R0,R0,R1
+    B LOOP
+
+L3: SUB R1,R1,R0
+    B LOOP 

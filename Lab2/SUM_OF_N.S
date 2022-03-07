@@ -1,0 +1,14 @@
+.DATA 
+    SUM: .WORD 0 
+
+.TEXT 
+    LDR R1, =SUM 
+    MOV R5, #0 ; INTERMEDIATE SUM 
+    MOV R4, #1 ; COUNT REGISTER 
+    LOOP: ADD R5, R5, R4 
+    ADD R4, R4, #1 
+    CMP R4, #10 
+    BNE LOOP 
+    STR R5, [R1] 
+    SWI 0X011 
+ .END

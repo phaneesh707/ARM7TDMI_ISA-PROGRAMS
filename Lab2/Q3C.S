@@ -1,0 +1,17 @@
+.DATA 
+    A: .BYTE 10,20,30,40,50,60,70,80,90,100 
+    SUM: .HWORD 0 
+.TEXT 
+    LDR R1, =A 
+    LDR R2, =SUM 
+    MOV R5, #0 
+    MOV R4, #0 ; COUNT REGISTER 
+    LOOP: LDR R3, [R1] 
+    ADD R5, R5, R3 
+    ADD R1, R1, #2 
+    ADD R4, R4, #2 
+    CMP R4, #10 
+    BNE LOOP 
+    STRH R5, [R2] 
+    SWI 0X011 
+.END

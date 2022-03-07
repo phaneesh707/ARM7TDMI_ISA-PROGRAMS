@@ -1,0 +1,36 @@
+;CHECK PARITY OF 32 BIT NUMBER USING A FUNCITON "PARITY_CHECK"
+;DISPLAY APPROPIRATE MESSAGE AS ODD PARITY OR EFEN PARITY NUMBER 
+
+.DATA 
+    ODD: .ASCIZ "ODD PARITY"
+    EVEN: .ASCIZ "EVEN APRITY"
+    A: .WORD 5
+
+.TEXT 
+
+    LDR R0,=A
+    LDR R1,[R0]
+    MOV R4,#0 ; ONE COUNT
+
+    LOOP: 
+        AND R2,R1,#1
+        CMP R2,#1
+        BLEQ COUNTONE
+        MOV R1,R1,LSR #1
+        CMP R1,#0
+        BNE LOOP
+        B DISP
+
+
+    COUNTONE:
+        ADD R4,R4,#1
+        MOV PC,LR 
+
+    DISP: 
+        AND R8,R4,#1
+        CMP R8,#1   
+        BEQ ODDI
+        
+
+        
+

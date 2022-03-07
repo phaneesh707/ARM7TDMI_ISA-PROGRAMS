@@ -1,0 +1,9 @@
+.DATA
+    A: .WORD 100,200,300,400,500,600,700,800
+    B: .WORD 0,0,0,0,0,0,0,0
+.TEXT
+    LDR R0,=A
+    LDR R7,=B
+    LDMIA R0!,{R1,R8,R9,R11}
+    LDMIA R0!,{R2,R3}
+.END

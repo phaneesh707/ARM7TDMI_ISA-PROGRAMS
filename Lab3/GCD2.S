@@ -1,0 +1,26 @@
+.DATA
+    A: .WORD 0X123
+    B: .WORD 0X23
+
+
+.TEXT
+LDR R3,=A
+LDR R4,=B 
+
+LDR R0,[R3]
+LDR R1,[R4]
+
+LOOP: CMP R0,R1
+    BEQ L1
+    BGT L2
+    BLT L3 
+
+
+L1: MOV R2,R1
+    SWI 0X011
+
+L2: SUB R0,R0,R1
+    B LOOP
+
+L3: SUB R1,R1,R0
+    B LOOP 

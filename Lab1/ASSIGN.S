@@ -1,0 +1,18 @@
+;P3
+
+MOV R0,#2
+
+CMP R0,#0
+BEQ L1
+
+L1: MOV R1,#1
+	B L3
+
+BGT L2 
+L2: MOV R1,#2
+	B L3
+
+MOV R1,#3
+
+L3: STOP
+ 
